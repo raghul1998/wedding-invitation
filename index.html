@@ -257,6 +257,16 @@ section{position:relative;padding:74px 26px;text-align:center;overflow:hidden}
   background:linear-gradient(180deg,#f0dc9e,#d4af37);box-shadow:0 6px 24px rgba(212,175,55,.35);
 }
 .submit-btn:active{transform:translateY(1px)}
+.confirm-card{text-align:center;padding:26px 10px 16px}
+.confirm-card .tick{
+  width:56px;height:56px;margin:0 auto 18px;border-radius:50%;
+  border:2px solid var(--gold);display:flex;align-items:center;justify-content:center;
+  color:var(--gold-soft);font-size:24px;box-shadow:0 0 24px rgba(212,175,55,.3);
+}
+.confirm-card h3{font-family:var(--caps);font-size:24px;letter-spacing:.12em;color:var(--gold-soft)}
+.confirm-card .sub{font-family:var(--serif);font-style:italic;font-size:15px;margin-top:8px;opacity:.9}
+.confirm-card .line{width:70px;height:1px;background:rgba(212,175,55,.6);margin:20px auto}
+.confirm-card .body{font-family:var(--serif);font-style:italic;font-size:15px;line-height:1.8;max-width:320px;margin:0 auto;color:var(--cream)}
 /* blessings wall */
 .wall-head{margin-top:44px}
 .wall-eyebrow{font-size:9.5px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold-soft)}
@@ -836,12 +846,24 @@ document.getElementById('submitRsvp').addEventListener('click', async ()=>{
   const card = blessCard(name, side, msg);
   wall.prepend(card);
   wall.scrollTop = 0;
-  const note = document.getElementById('rsvpNote');
-  note.style.display='block';
-  note.textContent = (RSVP_URL && !saved)
-    ? 'Hmm, your response could not reach us — please check your internet and try again.'
-    : 'Thank you! Your blessing has been added to the wall. 🙏';
-  document.getElementById('gName').value=''; document.getElementById('gMsg').value='';
+  if(RSVP_URL && !saved){
+    const note = document.getElementById('rsvpNote');
+    note.style.display='block';
+    note.textContent = 'Your response could not reach us. Please check your internet and try again.';
+  } else {
+    const attendingYes = attending === 'Attending';
+    document.querySelector('.form-card').innerHTML = `
+      <div class="confirm-card">
+        <div class="tick">✓</div>
+        <h3>Thank You!</h3>
+        <p class="sub">${attendingYes ? 'Response Received Joyfully' : 'Blessings Received with Love'}</p>
+        <div class="line"></div>
+        <p class="body">${attendingYes
+          ? 'Your presence and blessings are inscribed into our celebrations. We look forward to welcoming you in Atlanta!'
+          : 'Your love and blessings are inscribed into our celebrations. You will be in our hearts that day.'}</p>
+      </div>`;
+  }
+  if(document.getElementById('gName')){ document.getElementById('gName').value=''; document.getElementById('gMsg').value=''; }
   card.animate([{opacity:0,transform:'translateY(-12px)'},{opacity:1,transform:'none'}],{duration:600,easing:'ease'});
 });
 </script>
