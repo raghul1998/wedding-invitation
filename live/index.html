@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Live Stream — Rithu &amp; Raghul Wedding</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cinzel:wght@400;500&family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+/* ==========================================================
+   WHEN THE STREAM LINK ARRIVES:
+   paste it into STREAM_URL in the script below and push.
+   This page will then redirect guests straight to the stream.
+   ========================================================== */
+:root{
+  --gold:#d4af37;--gold-soft:#e8cf8a;--cream:#f6ecd7;
+  --teal-1:#0f3d3c;--teal-2:#17605c;--teal-3:#0a2b2a;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{
+  min-height:100svh;font-family:'Jost',sans-serif;color:var(--cream);
+  display:flex;align-items:center;justify-content:center;text-align:center;padding:30px 22px;
+  background:
+    radial-gradient(ellipse at 50% 0%, #1f7a72 0%, transparent 55%),
+    linear-gradient(180deg,var(--teal-2) 0%,var(--teal-1) 55%,var(--teal-3) 100%);
+}
+.card{max-width:420px;width:100%}
+.dot{
+  width:14px;height:14px;border-radius:50%;background:#e05252;margin:0 auto 20px;
+  box-shadow:0 0 0 0 rgba(224,82,82,.55);animation:pulse 1.8s ease-out infinite;
+}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(224,82,82,.55)}100%{box-shadow:0 0 0 18px rgba(224,82,82,0)}}
+.eyebrow{font-size:10.5px;letter-spacing:.45em;text-transform:uppercase;color:var(--gold)}
+h1{font-family:'Great Vibes',cursive;font-weight:400;font-size:44px;color:var(--gold-soft);margin-top:14px;text-shadow:0 0 24px rgba(212,175,55,.35)}
+.orn{width:220px;max-width:80%;height:20px;margin:18px auto;background:center/contain no-repeat url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 20"><g stroke="%23d4af37" fill="none" stroke-width="1.1"><path d="M0 10h52M188 10h240"/><path d="M78 11c7-5.5 13-5.5 19-1.5 4.5 3 9 3 14 .5"/><path d="M162 11c-7-5.5-13-5.5-19-1.5-4.5 3-9 3-14 .5"/></g><g fill="%23d4af37"><path d="M64 4.5q1.1 4.4 5.5 5.5-4.4 1.1-5.5 5.5-1.1-4.4-5.5-5.5 4.4-1.1 5.5-5.5z"/><path d="M176 4.5q1.1 4.4 5.5 5.5-4.4 1.1-5.5 5.5-1.1-4.4-5.5-5.5 4.4-1.1 5.5-5.5z"/><path d="M120 1.5c2.2 3 3.2 5.4 3.2 7.8 0 2.9-1.3 5-3.2 6.9-1.9-1.9-3.2-4-3.2-6.9 0-2.4 1-4.8 3.2-7.8z"/></g></svg>')}
+.msg{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:17px;line-height:1.8}
+.msg b{color:var(--gold-soft);font-style:normal;font-family:'Cinzel',serif;font-weight:500;letter-spacing:.06em}
+.count{display:flex;justify-content:center;gap:10px;margin:26px 0 6px}
+.cell{width:66px;padding:12px 0 10px;border:1px solid rgba(212,175,55,.5);background:rgba(255,255,255,.04)}
+.cell b{display:block;font-family:'Cinzel',serif;font-size:24px;font-weight:500;color:var(--gold-soft)}
+.cell span{font-size:8.5px;letter-spacing:.22em;text-transform:uppercase;opacity:.8}
+.save{font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);margin-top:18px;opacity:.9}
+.back{display:inline-block;margin-top:30px;padding:11px 26px;font-size:10px;letter-spacing:.3em;text-transform:uppercase;
+  color:var(--cream);text-decoration:none;border:1px solid rgba(212,175,55,.5);border-radius:999px;background:rgba(212,175,55,.08)}
+.back:hover{background:rgba(212,175,55,.2)}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="dot"></div>
+  <p class="eyebrow">Rithu &amp; Raghul</p>
+  <h1>The Wedding Live Stream</h1>
+  <div class="orn"></div>
+  <p class="msg">The muhurtham will be streamed live here on<br><b>Sunday, 30 August 2026 · 11:00 AM Eastern</b><br>(8:30 PM India time)</p>
+  <div class="count" id="count">
+    <div class="cell"><b id="d">–</b><span>Days</span></div>
+    <div class="cell"><b id="h">–</b><span>Hours</span></div>
+    <div class="cell"><b id="m">–</b><span>Mins</span></div>
+    <div class="cell"><b id="s">–</b><span>Secs</span></div>
+  </div>
+  <p class="save">Save this page and return on the wedding morning</p>
+  <a class="back" href="/">← Back to the invitation</a>
+</div>
+<script>
+/* EDIT: paste the stream link here when the photography team shares it,
+   e.g. const STREAM_URL = "https://youtube.com/live/xxxx";              */
+const STREAM_URL = "";
+
+if (STREAM_URL) location.replace(STREAM_URL);
+
+const target = new Date("2026-08-30T11:00:00-04:00").getTime();
+function tick(){
+  let diff = Math.max(0, target - Date.now());
+  const dd = Math.floor(diff/864e5); diff -= dd*864e5;
+  const hh = Math.floor(diff/36e5);  diff -= hh*36e5;
+  const mm = Math.floor(diff/6e4);   diff -= mm*6e4;
+  const ss = Math.floor(diff/1e3);
+  d.textContent = dd; h.textContent = hh; m.textContent = mm; s.textContent = ss;
+}
+tick(); setInterval(tick, 1000);
+</script>
+</body>
+</html>

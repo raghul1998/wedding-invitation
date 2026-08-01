@@ -217,6 +217,7 @@ section{position:relative;padding:74px 26px;text-align:center;overflow:hidden}
 .cer-meta .venue{color:var(--gold-soft);font-weight:500}
 .cer-meta small{display:block;font-size:10.5px;opacity:.7;line-height:1.5}
 .reception-note{font-family:var(--serif);font-style:italic;font-size:14.5px;line-height:1.8;max-width:330px;margin:44px auto 0;text-align:center;color:var(--gold-soft);opacity:.95}
+.live-pill{background:linear-gradient(180deg,#c65a4a,#9e2f22)!important;color:#fff!important;margin-left:8px}
 .map-pill{
   display:inline-block;margin-top:12px;padding:8px 16px;border-radius:999px;font-size:9.5px;
   letter-spacing:.22em;text-transform:uppercase;color:#2a1508;text-decoration:none;
@@ -460,6 +461,7 @@ footer{
         <small>Riverdale, Georgia</small>
       </div>
       <a class="map-pill" target="_blank" rel="noopener" href="https://maps.app.goo.gl/LrThU4J9XYUWYvHc8">Google Map Location ↗</a>
+      <a class="map-pill live-pill" target="_blank" rel="noopener" href="/live">🔴 Watch Live</a>
     </div>
 
     <div class="tl-item rv">
@@ -864,6 +866,7 @@ document.getElementById('submitRsvp').addEventListener('click', async ()=>{
         <p class="body">${attendingYes
           ? 'Your presence and blessings are inscribed into our celebrations. We look forward to welcoming you in Atlanta!'
           : 'Your love and blessings are inscribed into our celebrations. You will be in our hearts that day.'}</p>
+        ${attendingYes ? '' : '<a class="map-pill live-pill" style="margin:20px 0 0" href="/live" target="_blank" rel="noopener">🔴 Watch the Muhurtham Live</a>'}
       </div>`;
   }
   if(document.getElementById('gName')){ document.getElementById('gName').value=''; document.getElementById('gMsg').value=''; }
