@@ -565,6 +565,10 @@ footer{
    ============================================================ */
 const RSVP_URL = "https://script.google.com/macros/s/AKfycbxb4pwpHqLYbIp_bb4FfagypOcZw1NYQLpqp9jgSVM_xBrXo8BqCZoQn8Bb29vroMwqgg/exec";
 
+/* always start at the top so the seal reveals the hero, not a mid-scroll position */
+if ('scrollRestoration' in history) history.scrollRestoration = 'manual';
+scrollTo(0, 0);
+
 const reduced = matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /* ---------------- COVER: floating hearts/flowers ---------------- */
