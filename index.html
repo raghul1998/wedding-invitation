@@ -802,6 +802,8 @@ function blessCard(name, side, msg){
 /* load real blessings from the Google Sheet (if configured) */
 async function loadWall(){
   if(!RSVP_URL) return;                       // demo mode: keep sample cards
+  const wallEl = document.getElementById('wall');
+  wallEl.innerHTML = '<p style="font-size:11px;letter-spacing:.15em;text-transform:uppercase;opacity:.5;padding:14px 0">Loading blessings…</p>';
   try{
     const res = await fetch(RSVP_URL);
     const list = await res.json();
