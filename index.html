@@ -178,7 +178,7 @@ section{position:relative;padding:74px 26px;text-align:center;overflow:hidden}
   width:34px;height:34px;margin:0 auto 12px;border-radius:50%;border:1px solid var(--gold-dim);
   display:flex;align-items:center;justify-content:center;font-family:var(--caps);font-size:13px;color:var(--gold-soft);
 }
-.fam-col h4{font-family:var(--serif);font-weight:500;font-size:clamp(15px,4.4vw,19px);color:#fff;line-height:1.3;white-space:nowrap}
+.fam-col h4{font-family:var(--serif);font-weight:500;font-size:clamp(13.5px,4vw,19px);color:#fff;line-height:1.35;white-space:nowrap}
 .fam-col .role{font-size:9px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);margin-top:6px}
 .fam-col p{font-family:var(--serif);font-style:italic;font-size:13.5px;line-height:1.65;margin-top:10px;opacity:.85;text-wrap:balance}
 .request{font-family:var(--serif);font-style:italic;font-size:19px;color:var(--gold-soft);margin-top:34px}
@@ -397,14 +397,14 @@ footer{
   <div class="fam-grid rv d1">
     <div class="fam-col">
       <div class="badge">G</div>
-      <h4>Mr. &amp; Mrs.<br>Saravana Sundaram</h4>                 <!-- EDIT: groom's parents -->
+      <h4>A. Sumathi &amp;<br>N. Saravana Sundaram</h4>                 <!-- EDIT: groom's parents -->
       <p class="role">Parents of the Groom</p>
       <p>Tracing ancestral roots from Krishnagiri, seeking to unite two grand families with ancient traditional virtues.</p>
     </div>
     <div class="divider"></div>
     <div class="fam-col">
       <div class="badge">B</div>
-      <h4>Mr. &amp; Mrs.<br>Suresh Kumar</h4>              <!-- EDIT: bride's parents -->
+      <h4>C. Sumathi &amp;<br>D. Suresh Kumar</h4>              <!-- EDIT: bride's parents -->
       <p class="role">Parents of the Bride</p>
       <p>Tracing ancestral roots from Coimbatore, offering their cherished daughter with pure love and warmth.</p>
     </div>
@@ -619,7 +619,11 @@ document.getElementById('coverSeal').addEventListener('click', () => {
       bgm.play().then(()=>{ soundBtn.classList.add('show'); soundBtn.textContent='♪'; }).catch(()=>{});
     }
   }, 1000);
-  setTimeout(()=>{ cover.remove(); wipe.remove(); }, 2300);
+  setTimeout(()=>{
+    cover.remove(); wipe.remove();
+    /* deep link support: rithuwedsraghul.com/#rsvp opens straight to that section */
+    if (location.hash) document.querySelector(location.hash)?.scrollIntoView({behavior:'smooth'});
+  }, 2300);
 });
 soundBtn.addEventListener('click', ()=>{
   if (bgm.paused){ bgm.play(); soundBtn.textContent='♪'; }
